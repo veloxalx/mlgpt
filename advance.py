@@ -2,11 +2,12 @@ import numpy as np
 import faiss
 from sentence_transformers import SentenceTransformer
 from transformers import pipeline
+import sys
 try:
     import fitz  # PyMuPDF
 except ImportError:
     print("Please install PyMuPDF: pip install PyMuPDF")
-    exit(1)
+    sys.exit(1)
 
 # Load model for embedding
 embedder = SentenceTransformer('all-MiniLM-L6-v2')
