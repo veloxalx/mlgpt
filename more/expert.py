@@ -17,7 +17,7 @@ job_embeddings = model.encode(
 # Build FAISS index
 d = resume_embeddings.shape[1]
 index = faiss.IndexFlatL2(d)
-index.add(resume_embeddings)
+index.add(np.array(resume_embeddings))
 
 # Search: top 3 resumes for each job
 k = 3
