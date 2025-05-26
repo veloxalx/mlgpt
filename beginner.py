@@ -4,7 +4,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
 # Load data
-df = pd.read_csv('https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv')
+df = pd.read_csv(
+    'https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv')
 
 # Basic preprocessing
 df['Sex'] = df['Sex'].map({'male': 0, 'female': 1})
