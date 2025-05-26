@@ -90,7 +90,7 @@ if __name__ == "__main__":
     if not os.path.exists(PDF_PATH):
         print(f"[ERROR] PDF file not found at: {PDF_PATH}")
         exit(1)
-        
+
     print("[INFO] Reading and processing PDF...")
     text = extract_text_from_pdf(PDF_PATH)
     chunks = chunk_text(text, chunk_size=CHUNK_SIZE, overlap=CHUNK_OVERLAP)
