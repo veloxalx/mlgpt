@@ -27,14 +27,15 @@ model = SentenceTransformer('all-MiniLM-L6-v2')
 resume_embeddings = model.encode(resumes['text'].tolist())
 job_embeddings = model.encode(jobs['text'].tolist())
 
-# Build FAISS index (CONFUSION LOL)
-d = resume_embeddings[0].shape[0]  # confusion lol
+# Build FAISS index
+# get the first resume embedding vector , then the size of the first dimension
+d = resume_embeddings[0].shape[0] #d is assigned the length of the first resume embedding vector
 index = faiss.IndexFlatL2(d)  # confusion lol
-index.add(np.array(resume_embeddings))
+index.add(np.array(resume_embeddings)) #add to index array of resume embeddings
 
 # Search: top 3 resumes per job
 for i, job_vec in enumerate(job_embeddings):
-    D, I = index.search(np.array([job_vec]), k=3)
+    D, I = index.search(np.array([job_vec]), k=3) #D is distances, I is indices of nearest neighbors
     print(f"\nTop 3 Resumes for Job {i+1}:\n")
-    for idx in I[0]:
-        print(f"- {resumes.iloc[idx]['text']}")
+    for idx in I[0]: # I[0] contains indices of the top 3 resumes , idx is the index of the resume in the resumes DataFrame
+        print(f"- {resumes.iloc[idx]['text']}") #iloc is used to access the row in the DataFrame by index

@@ -11,7 +11,7 @@ y = df['label'] # Labels: 'FAKE' or 'REAL'
 
 #Preprocessing with TF-IDF
 vectorizer = TfidfVectorizer(stop_words='english', max_df=0.7)
-X_vec = vectorizer.fit_transform(X)
+X_vec = vectorizer.fit_transform(X) #learn with fit and transform to usable vectors
 
 #Train-test split
 X_train, X_test, y_train, y_test = train_test_split(X_vec, y, test_size=0.2, random_state=42)
