@@ -30,8 +30,6 @@ resume_embeddings = model.encode(resumes['text'].tolist())
 job_embeddings = model.encode(jobs['text'].tolist())
 
 # Build FAISS index
-
-# Build FAISS index
 # get the first resume embedding vector , then the size of the first dimension
 d = resume_embeddings[0].shape[0] # d is assigned the length of the first resume embedding vector
 # IndexFlatL2 is used for L2 distance (Euclidean distance) search
