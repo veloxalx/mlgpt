@@ -16,14 +16,14 @@ job_embeddings = model.encode(
 
 # Build FAISS index
 # get the first resume embedding vector , then the size of the first dimension
-# d is assigned the length of the first resume embedding vector
-d = resume_embeddings[0].shape[0]
+d = resume_embeddings[0].shape[0] # d is assigned the length of the first resume embedding vector
 # IndexFlatL2 is used for L2 distance (Euclidean distance) search
 index = faiss.IndexFlatL2(d)
- # add to index array of resume embeddings
-index.add(np.array(resume_embeddings)) 
+# add to index array of resume embeddings
+index.add(np.array(resume_embeddings))
 # Search: top 3 resumes for each job
 
+# Search: top 3 resumes per job
 for i, job_vec in enumerate(job_embeddings):
     # D is distances, I is indices of nearest neighbors
     D, I = index.search(np.array([job_vec]), k=3)
