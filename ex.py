@@ -38,7 +38,6 @@ d = resume_embeddings[0].shape[0] # d is assigned the length of the first resume
 index = faiss.IndexFlatL2(d)
 # add to index array of resume embeddings
 index.add(np.array(resume_embeddings))
-# Search: top 3 resumes for each job
 
 # Search: top 3 resumes per job
 for i, job_vec in enumerate(job_embeddings):
